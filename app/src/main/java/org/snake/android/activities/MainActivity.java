@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         db = new TodoItemsDBHelper(getApplicationContext());
         populateArrayItems();
+
         etEditText = (EditText) findViewById(R.id.addText);
         lvlItems = (ListView) findViewById(R.id.list_story_view);
         lvlItems.setAdapter(customItemsadapter);
@@ -57,11 +58,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         db.closeDB();
-
-
     }
+
 
     public void populateArrayItems()
     {
@@ -69,11 +68,13 @@ public class MainActivity extends AppCompatActivity {
         customItemsadapter = new TodoItemsAdapter(this, R.layout.list_view, todoItems);
     }
 
+
     public void onRestart(){
         super.onRestart();
         this.finish();
         this.startActivity(getIntent());
     }
+
 
     public void btnsaveonclick (View view)
     {
@@ -100,20 +101,18 @@ public class MainActivity extends AppCompatActivity {
                     String priorityPosition;
                     switch (position)
                     {
-                        case 0 : priorityPosition = "         High";
+                        case 0 : priorityPosition =  "High";
                             break;
-                        case 1 : priorityPosition = "         Low";
+                        case 1 : priorityPosition = "Low";
                             break;
-                        case 2 : priorityPosition = "         Medium";
+                        case 2 : priorityPosition = "Medium";
                             break;
                         default: priorityPosition = "";
                             break;
-
                     }
                     todoObject = new TodoObject(text, priorityPosition);
                     db.createTodo(todoObject);
                    onRestart();
-
                     etEditText.setText("");
                 }
             };
@@ -121,10 +120,7 @@ public class MainActivity extends AppCompatActivity {
             priority.setNegativeButton("Cancel", null);
             priority.show();
             populateArrayItems();
-
-
         }
-
     }
 
 
@@ -136,27 +132,6 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-       readItems();
-        if (resultCode == RESULT_OK) {
-            int flag = data.getExtras().getInt("flag");
-            int position = data.getExtras().getInt("editedItemPosition");
-            if (flag == 0) {
-                String name = data.getExtras().getString("editedItemEditItemActivty");
-                String newPriority = data.getExtras().getString("editItemPriority");
-
-            }
-            else if (flag ==1)
-            {
-
-
-            }
-            //   writeItems();
-        }
-    }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

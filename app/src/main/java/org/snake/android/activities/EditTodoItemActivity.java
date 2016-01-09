@@ -73,8 +73,6 @@ public class EditTodoItemActivity extends AppCompatActivity {
         todoObject.setText(editItemActivityEditText.getText().toString());
         todoObject.setPriority("High");
         db.updateToDo(todoObject);
-        Intent resultbackMainActivity = new Intent();
-        setResult(RESULT_OK, resultbackMainActivity);
         this.finish();
     }
 
@@ -83,8 +81,6 @@ public class EditTodoItemActivity extends AppCompatActivity {
         if (todoObject!= null){
             db.deleteToDo(todoObject.getId());
         }
-        Intent resultbackMainActivity = new Intent();
-        setResult(RESULT_OK, resultbackMainActivity);
         this.finish();
     }
 }
