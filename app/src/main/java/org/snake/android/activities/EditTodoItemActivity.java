@@ -3,7 +3,6 @@ package org.snake.android.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -18,10 +17,9 @@ public class EditTodoItemActivity extends AppCompatActivity {
     TodoObject todoObject;
     TodoItemsDBHelper db;
     EditText editItemActivityEditText;
-    RadioGroup groupItemPriority;
-    RadioButton editRadioButton;
-    int editItemPosition;
-    RadioButton ItemPriority;
+    RadioButton itemPriority;
+    RadioGroup newPriority;
+    int flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,24 +43,27 @@ public class EditTodoItemActivity extends AppCompatActivity {
 
     private void preloadViewData(TodoObject td) {
         editItemActivityEditText.setText(td.getText());
-        Log.d("PVC",td.getPriority());
 
         switch (td.getPriority().toLowerCase().trim()){
             case "high":
-                ItemPriority = (RadioButton) findViewById(R.id.radioBtnHigh);
-                ItemPriority.setChecked(true);
+                itemPriority = (RadioButton) findViewById(R.id.radioBtnHigh);
+                itemPriority.setChecked(true);
+                flag =0;
                 break;
             case "low":
-                ItemPriority = (RadioButton) findViewById(R.id.radioBtnLow);
-                ItemPriority.setChecked(true);
+                itemPriority = (RadioButton) findViewById(R.id.radioBtnLow);
+                itemPriority.setChecked(true);
+                flag =1;
                 break;
             case "medium":
-                ItemPriority = (RadioButton) findViewById(R.id.radioBtnMedium);
-                ItemPriority.setChecked(true);
+                itemPriority = (RadioButton) findViewById(R.id.radioBtnMedium);
+                itemPriority.setChecked(true);
+                flag=2;
                 break;
             default:
-                ItemPriority = (RadioButton) findViewById(R.id.radioBtnHigh);
-                ItemPriority.setChecked(true);
+                itemPriority = (RadioButton) findViewById(R.id.radioBtnHigh);
+                itemPriority.setChecked(true);
+                flag=0;
                 break;
         }
 
@@ -71,7 +72,11 @@ public class EditTodoItemActivity extends AppCompatActivity {
     public void btneditItemSave (View view)
     {
         todoObject.setText(editItemActivityEditText.getText().toString());
-        todoObject.setPriority("High");
+        newPriority = (RadioGroup) findViewById(R.id.radioBtnGroupPriority);
+        int newCheckedButton = newPriority.getCheckedRadioButtonId();
+        itemPriority = (RadioButton) findViewById(newCheckedButton);
+        todoObject.setPriority(itemPriority.getText().toString());
+
         db.updateToDo(todoObject);
         this.finish();
     }
