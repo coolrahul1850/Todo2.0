@@ -6,8 +6,6 @@ Items implemented
 5) Added alert boxes<br> 
 6) Cleaned the project to follow naming and package naming standards<br>
 
-Issues <br>
-1) [Minor] At the edit page, currently there is bug where priority needs to be only High
 
 <br>
 Enhancenments 
