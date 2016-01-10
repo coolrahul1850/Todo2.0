@@ -9,8 +9,8 @@ Items implemented
 
 <br>
 Enhancenments 
-1) [Major] Need to update the UI to be more friendly 
+1) [Major] Need to update the UI to be more friendly - Completed 
 
 <br>
 Gif 
-<a href="http://imgur.com/izyGcir"><img src="http://i.imgur.com/izyGcir.gif" title="source: imgur.com" /></a>
+<a href="http://imgur.com/WP3gtow"><img src="http://i.imgur.com/WP3gtow.gif" title="source: imgur.com" /></a>

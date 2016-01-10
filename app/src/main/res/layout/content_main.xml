@@ -2,30 +2,28 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context="org.snake.android.activities.MainActivity"
     tools:showIn="@layout/activity_main">
 
     <ListView
         android:id="@+id/list_story_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:choiceMode="singleChoice"
+        android:layout_marginTop="200dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp"
-        android:choiceMode="singleChoice" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"
         android:id="@+id/btnSave"
-        android:layout_marginBottom="10dp"
         android:onClick="btnsaveonclick"
-        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/addText"
         android:layout_toRightOf="@+id/addText"
         android:layout_toEndOf="@+id/addText" />
 
@@ -36,9 +34,11 @@
         android:ems="10"
         android:id="@+id/addText"
         android:hint="Enter a new Todo Item"
-        android:layout_alignTop="@+id/btnSave"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="125dp"
+        android:paddingStart="5dip"/>
 
 
 </RelativeLayout>
